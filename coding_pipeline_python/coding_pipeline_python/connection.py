@@ -1,5 +1,7 @@
 import sqlite3
 import datetime
+import requests
+import json
 
 database_name = 'alphavantage.db'
 current_time = datetime.datetime.now()
@@ -56,8 +58,6 @@ class ExtractData(Connection):
         Connection.__init__(self)
 
     def get_data(self, url):
-        import requests
-        import json
         # replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
         url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo'
         try:
@@ -91,7 +91,6 @@ class RawData(Connection):
 
     def insert(self, data):
         try:
-            import json
             sql_insert = '''
             INSERT INTO raw_time_series_intraday (extract_data, raw_data)
             VALUES (?, ?)
