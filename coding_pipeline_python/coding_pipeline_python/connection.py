@@ -133,14 +133,6 @@ class RawDataProcessor(DBConnection):
 
     def normalize_raw_table(self, source_table, target_table):
         try:
-            sql_v = f'''
-                SELECT name FROM sqlite_master WHERE type='table' AND name={target_table}
-            '''
-            self.execute(sql_v)
-            if self.fetchall():
-                print(f"Tabela '{target_table}' já existe.")
-                exit(1)
-
             sql = f'''
                 SELECT raw_data FROM {source_table}
             '''
