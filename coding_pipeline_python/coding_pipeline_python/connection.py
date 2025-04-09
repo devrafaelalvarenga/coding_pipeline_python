@@ -10,10 +10,10 @@ source_table = 'raw_time_series_intraday'
 target_table = 'standard_series_intraday'
 current_time = datetime.datetime.now()
 
-# Replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
+# https://www.alphavantage.co/support/#api-key // https://www.alphavantage.co/documentation/
 url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo'
 
-# Register adapters and converters for datetime
+# adaptadores e conversores para data e hora
 sqlite3.register_adapter(datetime.datetime, lambda dt: dt.isoformat())
 sqlite3.register_converter(
     "DATETIME", lambda s: datetime.datetime.fromisoformat(s.decode("utf-8")))
@@ -180,7 +180,7 @@ if __name__ == '__main__':
         data = raw_data_extractor.get_data(url)
 
     with RawDataSource() as raw_data_source:
-        raw_data_source.create_table()
+        # raw_data_source.create_table()
         raw_data_source.insert(data)
         # raw_data_source.delete()
         # raw_data_source.drop()
