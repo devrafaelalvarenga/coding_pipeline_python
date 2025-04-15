@@ -6,11 +6,33 @@ from db.db.connection import DBConnection
 
 
 class RawDataExtractor(DBConnection):
+    """_summary_
+
+    Args:
+        DBConnection (_type_): _description_
+
+    Raises:
+        SystemExit: _description_
+
+    Returns:
+        _type_: _description_
+    """
+
     def __init__(self):
         super().__init__()
 
     def get_data(self, url):
-        """Extrai dados da API Alpha Vantage"""
+        """_summary_
+
+        Args:
+            url (_type_): _description_
+
+        Raises:
+            SystemExit: _description_
+
+        Returns:
+            _type_: _description_
+        """
         try:
             response = requests.get(url)
             data = response.json()
@@ -23,6 +45,12 @@ class RawDataExtractor(DBConnection):
 
 
 class RawDataSource(DBConnection):
+    """_summary_
+
+    Args:
+        DBConnection (_type_): _description_
+    """
+
     def __init__(self, table_name):
         super().__init__()
         self.table_name = table_name

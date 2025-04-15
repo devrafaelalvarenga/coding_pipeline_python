@@ -4,11 +4,22 @@ from db.db.connection import DBConnection
 
 
 class RawDataProcessor(DBConnection):
+    """_summary_
+
+    Args:
+        DBConnection (_type_): _description_
+    """
+
     def __init__(self):
         super().__init__()
 
     def normalize_raw_table(self, source_table, target_table):
-        """Normaliza os dados brutos em uma estrutura tabular padrão"""
+        """_summary_
+
+        Args:
+            source_table (_type_): _description_
+            target_table (_type_): _description_
+        """
         try:
             sql = f'''
                 SELECT raw_data FROM {source_table}
